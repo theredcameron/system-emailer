@@ -33,8 +33,7 @@ func (this *SystemEmailer) SendEmail(request EmailRequest) error {
         return err
     }
     url := fmt.Sprintf("http://localhost%s/api/SendEmail", this.port)
-    fmt.Println(url)
-    fmt.Println(string(emailContent))
+    
     response, err := http.Post(url, "application/json", bytes.NewBuffer([]byte(emailContent)))
     if err != nil {
         return err
