@@ -40,7 +40,6 @@ type compiledHtmlContent struct {
 
 func (this *SystemEmailer) SendEmail(request EmailRequest) error {
     if request.HasHtml {
-        //fmt.Printf("this has mjml. MJML: %s\n", request.Body)
         newBody, err := this.compileEmailHtmlContents(request.Body)
         if err != nil {
             return err
@@ -53,8 +52,6 @@ func (this *SystemEmailer) SendEmail(request EmailRequest) error {
     if err != nil {
         return err
     }
-    
-    //fmt.Printf("this has html. HTML: %s\n", emailContent)
 
     url := fmt.Sprintf("http://localhost%s/api/SendEmail", this.port)
     
