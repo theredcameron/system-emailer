@@ -23,7 +23,7 @@ type SlackRequest struct {
 }
 
 func (this *SystemSlacker) SendSlackMessage(slackRequest SlackRequest) (error) {
-    url := fmt.Sprintf("http://localhost%s/open/api/SendSlackMessage", this.port)
+    url := fmt.Sprintf("http://localhost%s/api/SendSlackMessage", this.port)
     
     requestContent, err := json.Marshal(slackRequest)
     if err != nil {
