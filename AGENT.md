@@ -1,11 +1,11 @@
 # AGENT.md — `system-emailer` (Talaria)
 
 ## Overview
-`system-emailer` (planned to be renamed **Talaria**) is a lightweight, zero-dependency Go client library (`github.com/theredcameron/system-emailer`, package `system_emailer`) used by services in the Cameron Castle ecosystem to send emails and Slack notifications via local HTTP microservices (primarily **Mercury**).
+`system-emailer` (planned to be renamed **Talaria**) is a lightweight, zero-dependency Go client library (`github.com/theredcameron/system-emailer/v2`, package `system_emailer`) used by services in the Cameron Castle ecosystem to send emails and Slack notifications via local HTTP microservices (primarily **Mercury**).
 
 ## Tech Stack & Environment
 - **Language:** Go (`go 1.25.3`)
-- **Module:** `github.com/theredcameron/system-emailer`
+- **Module:** `github.com/theredcameron/system-emailer/v2`
 - **Package Name:** `system_emailer`
 - **Dependencies:** Standard library only (`net/http`, `encoding/json`, `bytes`, `fmt`, `io`)
 
