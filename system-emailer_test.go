@@ -15,7 +15,7 @@ func TestSendEmail(t *testing.T) {
         HasHtml: false,
     }
 
-    emailer := NewSystemEmailer(8923, -1)
+    emailer := NewSystemEmailer("localhost:8923", "")
 
     err := emailer.SendEmail(emailRequest)
     if err != nil {
@@ -75,7 +75,7 @@ func TestSendEmailWithHtml(t *testing.T) {
         HasHtml: true,
     }
     
-    emailer := NewSystemEmailer(8923, 4000)
+    emailer := NewSystemEmailer("localhost:8923", "localhost:4000")
 
     err := emailer.SendEmail(emailRequest)
     if err != nil {

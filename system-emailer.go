@@ -9,14 +9,14 @@ import (
 )
 
 type SystemEmailer struct {
-    port            string
-    htmlCompilePort string
+    host            string
+    htmlCompileHost string
 }
 
-func NewSystemEmailer(portNumber, htmlCompilePortNumber int) *SystemEmailer {
+func NewSystemEmailer(host, htmlCompileHost string) *SystemEmailer {
    return &SystemEmailer{
-      port: fmt.Sprintf(":%d", portNumber),
-      htmlCompilePort: fmt.Sprintf(":%d", htmlCompilePortNumber),
+      host: host,
+      htmlCompileHost: htmlCompileHost,
    } 
 }
 
@@ -53,7 +53,7 @@ func (this *SystemEmailer) SendEmail(request EmailRequest) error {
         return err
     }
 
-    url := fmt.Sprintf("http://localhost%s/api/SendEmail", this.port)
+    url := fmt.Sprintf("http://%s/api/SendEmail", this.host)
     
     response, err := http.Post(url, "application/json", bytes.NewBuffer([]byte(emailContent)))
     if err != nil {
@@ -76,7 +76,7 @@ func (this *SystemEmailer) SendEmail(request EmailRequest) error {
 }
 
 func (this *SystemEmailer) compileEmailHtmlContents(rawBody string) (string, error) {
-    url := fmt.Sprintf("http://localhost%s/api/email", this.htmlCompilePort)
+    url := fmt.Sprintf("http://%s/api/email", this.htmlCompileHost)
 
     requestBody := &uncompiledHtmlContent{
         Content: rawBody,
