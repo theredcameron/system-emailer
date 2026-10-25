@@ -29,10 +29,11 @@
   3. Expects `200 OK` (`http.StatusOK`); otherwise returns an error containing the status and response body.
 
 ### 2. Slack Client (`system-slacker.go`)
-- **`SystemSlacker`**: Client struct configured via `NewSystemSlacker(portNumber int)`.
+- **`SystemSlacker`**: Client struct configured via `NewSystemSlacker(host string)`.
+  - `host`: Target `host:port` for the Mercury Slack notification service (e.g., `"localhost:8923"`).
 - **`SlackRequest`**: Payload structure with `Message` (`string`, JSON `message`).
 - **`SendSlackMessage(slackRequest SlackRequest) error`**:
-  - Sends a `POST` request with the marshaled `SlackRequest` to `http://localhost:<port>/api/SendSlackMessage`.
+  - Sends a `POST` request with the marshaled `SlackRequest` to `http://<host>/api/SendSlackMessage`.
   - Expects `200 OK` (`http.StatusOK`).
 
 ## Local Service Endpoints & Default Ports (from tests)
