@@ -9,7 +9,7 @@ func TestSendSlackMessage(t *testing.T) {
         Message: "Test message",
     }    
 
-    slackMessager := NewSystemSlacker(8923)
+    slackMessager := NewSystemSlacker("localhost:8923")
 
     err := slackMessager.SendSlackMessage(slackRequest)
     if err != nil {

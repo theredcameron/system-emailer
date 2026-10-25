@@ -9,12 +9,12 @@ import (
 )
 
 type SystemSlacker struct {
-    port    string    
+    host    string    
 }
 
-func NewSystemSlacker(portNumber int) *SystemSlacker {
+func NewSystemSlacker(host string) *SystemSlacker {
    return &SystemSlacker{
-      port: fmt.Sprintf(":%d", portNumber),
+      host: host,
    } 
 }
 
@@ -23,7 +23,7 @@ type SlackRequest struct {
 }
 
 func (this *SystemSlacker) SendSlackMessage(slackRequest SlackRequest) (error) {
-    url := fmt.Sprintf("http://localhost%s/api/SendSlackMessage", this.port)
+    url := fmt.Sprintf("http://%s/api/SendSlackMessage", this.host)
     
     requestContent, err := json.Marshal(slackRequest)
     if err != nil {
